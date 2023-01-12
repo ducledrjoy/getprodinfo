@@ -4,11 +4,11 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document("duplicateProdName")
 @Data
-@Document(collection = "company_drugs")
-public class CompanyDrug {
+public class DuplicateProd {
+
     @Id
     private String id;
-    private String companyId;
-    private String drugId;
+    private String name;
 }

@@ -1,29 +1,22 @@
 package com.example.getofficenames.service;
 
-import com.example.getofficenames.entity.CompanyDrug;
-import com.example.getofficenames.entity.Drug;
-import com.example.getofficenames.repo.CompanyDrugRepository;
-import com.example.getofficenames.repo.DrugRepository;
-import com.example.getofficenames.repo.PharmacyOfficeRepository;
+import com.example.getofficenames.repo.AdvertisingPosterRepository;
+import com.example.getofficenames.repo.ContactRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private final CompanyDrugRepository companyDrugRepository;
-    private final DrugRepository drugRepository;
-    private final PharmacyOfficeRepository pharmacyOfficeRepository;
+    private final AdvertisingPosterRepository advertisingPosterRepository;
+    private final MongoTemplate mongoTemplate;
+    private final ContactRepository contactRepository;
 
-    public void getProductInfo(){
-
-        List<CompanyDrug> companyDrugList = companyDrugRepository.findAll();
-
-        List<Drug> drugs = drugRepository.findAll();
-
+    public Object testQuery(Pageable pageable) {
+        return contactRepository.findAll(pageable);
     }
 }
